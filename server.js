@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import connectDb from "./config/db.js";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 import colors from "colors";
 const port = process.env.PORT;
@@ -10,6 +11,7 @@ import userRoutes from "./routes/userRoutes.js";
 
 connectDb();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoutes);
 
